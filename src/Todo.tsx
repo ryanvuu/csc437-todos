@@ -1,7 +1,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
-function Todo(props) {
+interface ITodo {
+  id: string;
+  name: string;
+  completed: boolean;
+  key: string;
+  onTaskToggle: (id: string) => void;
+  deleteTask: (id: string) => void;
+}
+
+function Todo(props: ITodo) {
 
   function handleCheckboxClicked() {
     props.onTaskToggle(props.id);

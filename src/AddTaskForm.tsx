@@ -1,6 +1,10 @@
 import { useState } from "react";
 
-function AddTaskForm(props) {
+interface ITaskFormProps {
+  onNewTask: (name: string) => void;
+}
+
+function AddTaskForm(props: ITaskFormProps) {
 
   const [inputText, setInputText] = useState("")
 
@@ -14,7 +18,7 @@ function AddTaskForm(props) {
       <input
         className="border-2 border-solid border-gray-600 rounded p-3 mr-2 mb-4 text-[1rem]"
         placeholder="New task name"
-        onChange={(e) => setInputText(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputText(e.target.value)}
         value={inputText}
       />
       <button

@@ -18,13 +18,13 @@ function App() {
   const [taskList, setTaskList] = useState(INITIAL_TASK_LIST);
   const [isOpen, setIsOpen] = useState(false);
 
-  function addTask(name) {
+  function addTask(name: string) {
     const newTask = { id: `todo-${nanoid()}`, name, completed: false };
     setTaskList([...taskList, newTask]);
     setIsOpen(false);
   }
 
-  function toggleTaskCompleted(id) {
+  function toggleTaskCompleted(id: string) {
     const updatedTasks = taskList.map((task) => {
       if (id === task.id) {
         return { ...task, completed: !task.completed };
@@ -34,7 +34,7 @@ function App() {
     setTaskList(updatedTasks);
   }
 
-  function deleteTask(id) {
+  function deleteTask(id: string) {
     const remainingTasks = taskList.filter((task) => id !== task.id);
     setTaskList(remainingTasks);
   }

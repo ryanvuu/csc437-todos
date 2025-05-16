@@ -1,12 +1,18 @@
 import { useRef } from 'react';
 
-function Modal(props) {
+interface IModal {
+  headerLabel: string;
+  isOpen: boolean;
+  onCloseRequested: () => void;
+  children: React.ReactNode;
+}
 
-  const innerDivRef = useRef(null);
+function Modal(props: IModal) {
+  const innerDivRef = useRef<HTMLDivElement>(null);
 
-  function handleModalClicked(e) {
+  function handleModalClicked(e: React.MouseEvent<HTMLElement>) {
     // check if the inner div refernce isn't null and then check which part the user clicked
-    if (innerDivRef.current && !innerDivRef.current.contains(e.target)) {
+    if (innerDivRef.current && !innerDivRef.current?.contains(e.target as Node)) {
       props.onCloseRequested();
     }
   }
